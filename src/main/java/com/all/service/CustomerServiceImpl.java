@@ -8,14 +8,15 @@ import org.springframework.stereotype.Service;
 import com.all.model.Customer;
 import com.all.repository.CustomerRepository;
 
-
 @Service("customerService")
 public class CustomerServiceImpl implements CustomerService {
 
-	@Autowired
+	// @Autowired
 	private CustomerRepository customerRepository;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.all.service.CustomerService#findAll()
 	 */
 	@Override
@@ -25,7 +26,11 @@ public class CustomerServiceImpl implements CustomerService {
 
 	}
 
+	@Autowired
 	public void setCustomerRepository(CustomerRepository customerRepository) {
+
+		System.out.println("We Are Using Setter Injection..");
+
 		this.customerRepository = customerRepository;
 	}
 }
