@@ -1,10 +1,9 @@
 package com.all.main;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.all.service.CustomerService;
-import com.all.service.CustomerServiceImpl;
 
 public class Application {
 
@@ -12,14 +11,13 @@ public class Application {
 
 		// CustomerService service = new CustomerServiceImpl();
 
-		ApplicationContext appCtx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext appCtx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-		
-		CustomerService service = appCtx.getBean("customerService" , CustomerService.class);
-		
-		System.out.println(service.findAll().get(0).getFirstname());
-		System.out.println(service.findAll().get(0).getLastname());
-		
+		CustomerService customerService = appCtx.getBean("customerService", CustomerService.class);
+
+		System.out.println(customerService.findAll().get(0).getFirstname());
+		System.out.println(customerService.findAll().get(0).getLastname());
+
 		System.out.println("Spring 4.2.0 Release final.");
 	}
 
